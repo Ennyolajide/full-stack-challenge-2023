@@ -59,9 +59,20 @@
                                         <a href="{{ route('users.index') }}">
                                             Manage Users </a>
                                         @endcan
+
+                                        @can ('add-referrals')
                                         <a href="{{ route('add-referral') }}">
                                             Add Referral
                                         </a>
+                                        <a href="{{ route('process-upload') }}">Bulk Upload</a>
+                                        @endcan
+                                        
+                                        @can ('view-referrals')
+                                        <a href="{{ route('view-referrals') }}">
+                                            View Referrals
+                                        </a>
+                                        @endcan
+
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

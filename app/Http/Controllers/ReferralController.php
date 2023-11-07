@@ -16,32 +16,11 @@ class ReferralController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($country=null, $city=null)
+    public function index()
     {
-        // echo $country; 
+        $referrals = Referral::all();
 
-        $countries = array();
-        $cities = array();
-        $country_filter = false;
-        //
-        if($country == null) { 
-            $referrals = Referral::paginate(15);
-            $countries = Referral::getCountries();
-        }
-        elseif($city == null) {
-            $country_filter = true;
-            $referrals = Referral::where("country", $country)->paginate(15);
-            $countries = array($country);
-            $cities = Referral::getCities($country);
-        }
-        else {
-            $country_filter = true;
-            $referrals = Referral::where("country", $country)->where("city", $city)->paginate(15);
-            $countries = array($country);
-            $cities = array($city);
-        }
-        
-        return view('referrals.index', compact('referrals', 'countries', 'cities'))->with('country_filter', $country_filter);
+        return view('referrals.index', compact('referrals'));
     }
 
     /**
@@ -102,7 +81,7 @@ class ReferralController extends Controller
      */
     public function show(Referral $referral)
     {
-        //
+        return view('referrals.show', compact('referral'));
     }
 
     /**
