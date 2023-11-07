@@ -6,7 +6,6 @@ return [
             'manage-users',
             'view-referrals',
             'add-referrals',
-            'add-comments',
         ],
         'supervisor' => [
             'view-referrals',

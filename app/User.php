@@ -28,6 +28,30 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $encryptable = [
+        'name'
+    ];
+
+    public function getAttribute($key)
+    {
+        $value = parent::getAttribute($key);
+
+        if (in_array($key, $this->encryptable) && $value !== null) {
+            $value = decrypt($value);
+        }
+
+        return $value;
+    }
+
+    public function setAttribute($key, $value)
+    {
+        if (in_array($key, $this->encryptable) && $value !== null) {
+            $value = encrypt($value);
+        }
+
+        return parent::setAttribute($key, $value);
+    }
+
     public function posts() {
         return $this->hasMany(Post::class);
     }
