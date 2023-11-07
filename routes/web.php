@@ -38,3 +38,10 @@ Route::get('my-posts', 'AuthorsController@posts')->name('my-posts');
 //Routes for Authors
 Route::get('authors', 'AuthorsController@index');
 Route::get('authors/{author}', 'AuthorsController@show');
+
+Route::get('users', 'UserController@index')->name('users.index');
+Route::get('users/create', 'UserController@create')->name('users.create');
+Route::post('users', 'UserController@store')->name('users.store');
+Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit');
+Route::put('users/{user}', 'UserController@update')->name('users.update');
+Route::delete('users/{user}', 'UserController@destroy')->name('users.destroy');

@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @yield('styles')
 </head>
 <body>
     <div id="app">
@@ -53,6 +55,10 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        @can ('manage-users')
+                                        <a href="{{ route('users.index') }}">
+                                            Manage Users </a>
+                                        @endcan
                                         <a href="{{ route('add-referral') }}">
                                             Add Referral
                                         </a>
@@ -92,5 +98,8 @@
             });
         });
     </script>
+
+    @yield('scripts')
+
 </body>
 </html>
