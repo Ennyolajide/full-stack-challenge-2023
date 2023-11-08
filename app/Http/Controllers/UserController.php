@@ -9,17 +9,6 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            if (!auth()->user()->hasRole('admin')) {
-                abort(403, 'Unauthorized action.');
-            }
-
-            return $next($request);
-        });
-        
-    }
 
     public function index()
     {
